@@ -3,9 +3,13 @@ package org.rainday.swagger
 import io.swagger.v3.core.util.Json
 import io.swagger.v3.core.util.Yaml
 import io.swagger.v3.oas.models.OpenAPI
+import io.swagger.v3.oas.models.Paths
 import org.rainday.swagger.controller.ResourceInPackageA
 import spock.lang.Specification
 
+import static org.hamcrest.CoreMatchers.equalTo
+import static org.hamcrest.CoreMatchers.not
+import static spock.util.matcher.HamcrestSupport.that
 /**
  * Created by admin on 2020/12/30 10:06:57.
  */
@@ -101,16 +105,20 @@ components:
         given:
         Reader reader = new Reader();
 
+
         when:
+        Paths p1 = new Paths();
+        System.out.println(p1 == new Paths());
+
         Set<Class<?>> classes = new HashSet<>();
         classes.add(ResourceInPackageA.class)
         OpenAPI api = reader.read(classes);
 
         then:
-        Yaml.pretty(api) != null
+        that null, not(Yaml.pretty(api))
         println Yaml.pretty(api)
-        // 左：actual 右：expect
-        Yaml.pretty(api) == expectResult
+        // 左：expect 右：actual
+        that expectResult, equalTo(Yaml.pretty(api))
     }
 
     def "reader simple json test"() {
