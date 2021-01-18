@@ -1,0 +1,19 @@
+
+== v1.0.1
+=== Features
+
+. 分离出对特定注解进行读取，并产生swagger-model对象的代码。为后期对注释进行读取进行铺垫。
+
+.. Java-method annotations: `HttpMethod(Get,Post,Put..)` `Path` `Consumes` `Produces`
+.. Java-parameter annotations: `Parameter` `BeanParam` `CookieParam` `FormParam` `HeaderParam` `MatrixParam` `PathParam` `QueryParam`
+
+
+[NOTE]
+====
+具体使用填值要求参考 open3.0规范
+
+* link:++ http://spec.openapis.org/oas/v3.0.1#parameter-object ++[英文版]
+
+* link:++ https://github.com/fishead/OpenAPI-Specification/blob/master/versions/3.0.0.zhCN.md#parameterObject ++[中文版]
+====
+

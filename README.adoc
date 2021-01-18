@@ -1,0 +1,10 @@
+= swagger-gin
+Doc Writer <doc.writer@asciidoctor.org>
+v1.0.0, 2021-01-18
+:toc:
+
+scan all classes then generate openapi-v3.yaml
+
+include::CHANGELOG.adoc[]
+
+
