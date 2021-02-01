@@ -31,17 +31,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- test -->
-            <dependency>
-                <groupId>org.spockframework</groupId>
-                <artifactId>spock-core</artifactId>
-                <version>2.0-M4-groovy-3.0</version>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-            </dependency>
 
             <!-- jackson -->
             <dependency>
@@ -54,12 +43,66 @@
                 <artifactId>jackson-annotations</artifactId>
                 <version>2.12.1</version>
             </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.12.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.12.1</version>
+            </dependency>
 
             <!-- log -->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>2.14.0</version>
+            </dependency>
+
+            <!-- project -->
+            <dependency>
+                <groupId>org.rainday</groupId>
+                <artifactId>swagger-gin-logging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.rainday</groupId>
+                <artifactId>swagger-gin-utils</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.rainday</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.rainday</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.rainday</groupId>
+                <artifactId>swagger-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.rainday</groupId>
+                <artifactId>swagger-gin-annotations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- test -->
+            <dependency>
+                <groupId>org.spockframework</groupId>
+                <artifactId>spock-core</artifactId>
+                <version>2.0-M4-groovy-3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
