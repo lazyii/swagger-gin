@@ -9,8 +9,8 @@ import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
 import java.util.Map;
 import java.util.Optional;
-import org.rainday.swagger.annotations.Consumes;
-import org.rainday.swagger.annotations.Produces;
+import org.rainday.ws.rs.annotations.Consumes;
+import org.rainday.ws.rs.annotations.Produces;
 import org.rainday.swagger.utils.StringUtils;
 
 public class OperationParser {

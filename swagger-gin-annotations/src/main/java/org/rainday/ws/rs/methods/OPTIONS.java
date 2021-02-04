@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package org.rainday.swagger.methods;
+package org.rainday.ws.rs.methods;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -23,16 +23,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Indicates that the annotated method responds to HTTP HEAD requests.
+ * Indicates that the annotated method responds to HTTP OPTIONS requests.
  *
  * @author Paul Sandoz
  * @author Marc Hadley
  * @see HttpMethod
- * @since 1.0
+ * @since 1.1
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@HttpMethod(HttpMethod.HEAD)
+@HttpMethod(HttpMethod.OPTIONS)
 @Documented
-public @interface HEAD {
+public @interface OPTIONS {
 }

@@ -14,30 +14,25 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package org.rainday.swagger.annotations;
+package org.rainday.ws.rs.methods;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Inherited
-@Target({ElementType.TYPE, ElementType.METHOD})
+/**
+ * Indicates that the annotated method responds to HTTP HEAD requests.
+ *
+ * @author Paul Sandoz
+ * @author Marc Hadley
+ * @see HttpMethod
+ * @since 1.0
+ */
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
+@HttpMethod(HttpMethod.HEAD)
 @Documented
-public @interface Produces {
-
-    /**
-     * A list of media types. Each entry may specify a single type or consist
-     * of a comma separated list of types, with any leading or trailing white-spaces
-     * in a single type entry being ignored. For example:
-     * <pre>
-     *  {"image/jpeg, image/gif ", " image/png"}
-     * </pre>
-     * Use of the comma-separated form allows definition of a common string constant
-     * for use on multiple targets.
-     */
-    String[] value() default "*/*";
+public @interface HEAD {
 }

@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package org.rainday.swagger.annotations;
+package org.rainday.ws.rs.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -23,18 +23,21 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 
-@Target({ElementType.PARAMETER, ElementType.METHOD, ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface QueryParam {
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ApplicationPath {
 
     /**
-     * Defines the name of the HTTP query parameter whose value will be used
-     * to initialize the value of the annotated method argument, class field or
-     * bean property. The name is specified in decoded form, any percent encoded
-     * literals within the value will not be decoded and will instead be
-     * treated as literal text. E.g. if the parameter name is "a b" then the
-     * value of the annotation is "a b", <i>not</i> "a+b" or "a%20b".
+     * Defines the base URI for all resource URIs. A trailing '/' character will
+     * be automatically appended if one is not present.
+     *
+     * <p>The supplied value is automatically percent
+     * encoded to conform to the {@code path} production of
+     * {@link <a href="http://tools.ietf.org/html/rfc3986#section-3.3">RFC 3986 section 3.3</a>}.
+     * Note that percent encoded values are allowed in the value, an
+     * implementation will recognize such values and will not double
+     * encode the '%' character.</p>
      */
     String value();
 }

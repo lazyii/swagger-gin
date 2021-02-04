@@ -1,6 +1,6 @@
 
 
-package org.rainday.swagger.annotations;
+package org.rainday.ws.rs.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

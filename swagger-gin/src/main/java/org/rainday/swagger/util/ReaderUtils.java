@@ -18,13 +18,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import org.rainday.swagger.OpenAPIConfiguration;
 import org.rainday.swagger.OpenAPIExtension;
 import org.rainday.swagger.OpenAPIExtensions;
-import org.rainday.swagger.annotations.Consumes;
-import org.rainday.swagger.annotations.Context;
-import org.rainday.swagger.annotations.Path;
-import org.rainday.swagger.methods.HttpMethod;
+import org.rainday.ws.rs.annotations.Consumes;
+import org.rainday.ws.rs.annotations.Context;
+import org.rainday.ws.rs.annotations.Path;
+import org.rainday.ws.rs.methods.HttpMethod;
 import org.rainday.swagger.utils.StringUtils;
 
 public class ReaderUtils {
@@ -140,20 +139,7 @@ public class ReaderUtils {
         }
         return Optional.of(list);
     }
-
-    public static boolean isIgnored(String path, OpenAPIConfiguration config) {
-        if (config.getIgnoredRoutes() == null) {
-            return false;
-        }
-        for (String item : config.getIgnoredRoutes()) {
-            final int length = item.length();
-            if (path.startsWith(item) && (path.length() == length || path.startsWith(PATH_DELIMITER, length))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+   
     public static String getPath(Path classLevelPath, Path methodLevelPath, String parentPath, boolean isSubresource) {
         if (classLevelPath == null && methodLevelPath == null && StringUtils.isEmpty(parentPath)) {
             return null;

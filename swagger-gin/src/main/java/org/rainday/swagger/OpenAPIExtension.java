@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import org.rainday.swagger.annotations.Consumes;
+import org.rainday.ws.rs.annotations.Consumes;
 
 public interface OpenAPIExtension {
 

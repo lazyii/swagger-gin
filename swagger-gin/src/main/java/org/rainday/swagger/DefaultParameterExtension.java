@@ -18,13 +18,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import org.rainday.swagger.annotations.BeanParam;
-import org.rainday.swagger.annotations.Consumes;
-import org.rainday.swagger.annotations.CookieParam;
-import org.rainday.swagger.annotations.HeaderParam;
-import org.rainday.swagger.annotations.MatrixParam;
-import org.rainday.swagger.annotations.PathParam;
-import org.rainday.swagger.annotations.QueryParam;
+import org.rainday.ws.rs.annotations.BeanParam;
+import org.rainday.ws.rs.annotations.Consumes;
+import org.rainday.ws.rs.annotations.CookieParam;
+import org.rainday.ws.rs.annotations.HeaderParam;
+import org.rainday.ws.rs.annotations.MatrixParam;
+import org.rainday.ws.rs.annotations.PathParam;
+import org.rainday.ws.rs.annotations.QueryParam;
 import org.rainday.swagger.utils.StringUtils;
 
 public class DefaultParameterExtension extends AbstractOpenAPIExtension {

@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package org.rainday.swagger.methods;
+package org.rainday.ws.rs.methods;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -167,7 +167,7 @@ public class ParameterProcessor {
                 }
             } else if (ModelResolver.NOT_NULL_ANNOTATIONS.contains(annotation.annotationType().getSimpleName())) {
                 parameter.setRequired(true);
-            } else if (annotation.annotationType().getName().equals("org.rainday.swagger.annotations.FormParam")) {//这里原本为javax.ws.rs.FormParam
+            } else if (annotation.annotationType().getName().endsWith(".FormParam")) {//这里原本为javax.ws.rs.FormParam
                 try {
                     String name = (String) annotation.annotationType().getMethod("value").invoke(annotation);
                     if (StringUtils.isNotBlank(name)) {
@@ -177,7 +177,7 @@ public class ParameterProcessor {
                 }
                 // set temporarely to "form" to inform caller that we need to further process along other form parameters
                 parameter.setIn("form");
-            } else if (annotation.annotationType().getName().endsWith("FormDataParam")) {
+            } else if (annotation.annotationType().getName().endsWith(".FormDataParam")) {
                 try {
                     String name = (String) annotation.annotationType().getMethod("value").invoke(annotation);
                     if (StringUtils.isNotBlank(name)) {

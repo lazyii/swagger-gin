@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  */
 
-package org.rainday.swagger.annotations;
+package org.rainday.ws.rs.methods;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -22,20 +22,17 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ElementType.PARAMETER, ElementType.METHOD, ElementType.FIELD})
+/**
+ * Indicates that the annotated method responds to HTTP POST requests.
+ *
+ * @author Paul Sandoz
+ * @author Marc Hadley
+ * @see HttpMethod
+ * @since 1.0
+ */
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
+@HttpMethod(HttpMethod.POST)
 @Documented
-public @interface PathParam {
-
-    /**
-     * Defines the name of the URI template parameter whose value will be used
-     * to initialize the value of the annotated method parameter, class field or
-     * property. See {@link Path#value()} for a description of the syntax of
-     * template parameters.
-     *
-     * <p>E.g. a class annotated with: {@code @Path("widgets/{id}")}
-     * can have methods annotated whose arguments are annotated
-     * with {@code @PathParam("id")}.
-     */
-    String value();
+public @interface POST {
 }

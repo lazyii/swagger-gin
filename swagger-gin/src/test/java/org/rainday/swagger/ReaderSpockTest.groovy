@@ -5,6 +5,7 @@ import io.swagger.v3.core.util.Yaml
 import io.swagger.v3.oas.models.OpenAPI
 import io.swagger.v3.oas.models.Paths
 import org.rainday.swagger.controller.ResourceInPackageA
+import org.rainday.swagger.picker.Reader
 import spock.lang.Specification
 
 import static org.hamcrest.CoreMatchers.equalTo

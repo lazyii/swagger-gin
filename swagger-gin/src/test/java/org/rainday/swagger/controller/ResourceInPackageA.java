@@ -3,11 +3,11 @@ package org.rainday.swagger.controller;
 import io.swagger.v3.oas.models.PathItem;
 import java.util.List;
 import java.util.Map;
-import org.rainday.swagger.annotations.Consumes;
-import org.rainday.swagger.annotations.FormParam;
-import org.rainday.swagger.annotations.Path;
-import org.rainday.swagger.methods.PATCH;
 import org.rainday.swagger.model.Pet;
+import org.rainday.ws.rs.annotations.Consumes;
+import org.rainday.ws.rs.annotations.FormParam;
+import org.rainday.ws.rs.annotations.Path;
+import org.rainday.ws.rs.methods.PATCH;
 
 @Path("/packageA")
 public class ResourceInPackageA {
