@@ -1,13 +1,7 @@
 package org.rainday.swagger.picker;
 
-import com.fasterxml.jackson.databind.BeanDescription;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 import io.swagger.v3.core.util.AnnotationsUtils;
-import io.swagger.v3.core.util.Json;
-import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Hidden;
-import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Paths;
@@ -21,15 +15,10 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import org.rainday.logging.Logger;
 import org.rainday.logging.LoggerFactory;
-import org.rainday.swagger.util.ReaderUtils;
-import org.rainday.ws.rs.annotations.Consumes;
-import org.rainday.ws.rs.annotations.Path;
-import org.rainday.ws.rs.annotations.Produces;
 
 public class Reader {
     private static final Logger logger = LoggerFactory.getLogger(Reader.class);
@@ -43,15 +32,6 @@ public class Reader {
     public static Components components;
     public static Paths paths;
     public static Set<Tag> openApiTags;
-
-    private static final String GET_METHOD = "get";
-    private static final String POST_METHOD = "post";
-    private static final String PUT_METHOD = "put";
-    private static final String DELETE_METHOD = "delete";
-    private static final String PATCH_METHOD = "patch";
-    private static final String TRACE_METHOD = "trace";
-    private static final String HEAD_METHOD = "head";
-    private static final String OPTIONS_METHOD = "options";
 
     public Reader() {
         this.openAPI = new OpenAPI();
@@ -135,53 +115,12 @@ public class Reader {
                 scannedResources);
         
         Hidden hidden = openApiAttr.getHidden();
-        Path apiPath = openApiAttr.getApiPath();
-        io.swagger.v3.oas.annotations.responses.ApiResponse[] classResponses = openApiAttr.getClassResponses();
-        ExternalDocumentation apiExternalDocs = openApiAttr.getApiExternalDocs();
         io.swagger.v3.oas.annotations.tags.Tag[] apiTags = openApiAttr.getApiTags();
-        Server[] apiServers = openApiAttr.getApiServers();
-        Consumes classConsumes = openApiAttr.getClassConsumes();
-        Produces classProduces = openApiAttr.getClassProduces();
-        
         
         if (hidden != null) {
             return openAPI;
         }
         
-        // class tags, consider only name to add to class operations
-        final Set<String> classTags = new LinkedHashSet<>();
-        if (apiTags != null) {
-            AnnotationsUtils.getTags(apiTags, false).ifPresent(tags -> tags.stream().map(Tag::getName).forEach(classTags::add));
-        }
-
-        // parent tags
-        if (isSubresource) {
-            if (parentTags != null) {
-                classTags.addAll(parentTags);
-            }
-        }
-
-        // servers
-        final List<io.swagger.v3.oas.models.servers.Server> classServers = new ArrayList<>();
-        if (apiServers != null) {
-            AnnotationsUtils.getServers(apiServers).ifPresent(classServers::addAll);
-        }
-
-        // class external docs
-        Optional<io.swagger.v3.oas.models.ExternalDocumentation> classExternalDocumentation = AnnotationsUtils.getExternalDocumentation(apiExternalDocs);
-
-
-        JavaType classType = TypeFactory.defaultInstance().constructType(cls);
-        BeanDescription bd = Json.mapper().getSerializationConfig().introspect(classType);
-
-        final List<Parameter> globalParameters = new ArrayList<>();
-
-        // look for constructor-level annotated properties
-        globalParameters.addAll(ReaderUtils.collectConstructorParameters(cls, components, classConsumes, null));
-
-        // look for field-level annotated properties
-        globalParameters.addAll(ReaderUtils.collectFieldParameters(cls, components, classConsumes, null));
-
         // iterate class methods
         Method[] methods = cls.getMethods();
         for (Method method : methods) {
@@ -212,7 +151,6 @@ public class Reader {
             }
             openAPI.setTags(new ArrayList<>(tagsSet));
         }
-
         return openAPI;
     }
 
