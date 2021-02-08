@@ -8,7 +8,7 @@ import io.swagger.v3.oas.models.info.Info;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.Test;
-import org.rainday.swagger.controller.ResourceInPackageA;
+import org.rainday.swagger.controller.PetResourceSlashesinPath;
 import org.rainday.swagger.picker.Reader;
 
 /**
@@ -18,6 +18,12 @@ import org.rainday.swagger.picker.Reader;
 public class ReaderJunit4Test {
     
     @Test
+    /**
+     * @apiNote {get,post,delete} /sdfjsdfsd/{openId}/add.do
+     * @implNote {api summary} sldkjflsdkjflsdkjf
+     * @consumes {application/json,application/xml}
+     * @produces {application/json,application/xml}
+     */
     public void readerSimpleTest() {
     
     
@@ -29,7 +35,7 @@ public class ReaderJunit4Test {
         Paths p1 = new Paths();
         System.out.println(p1 == new Paths());
         Reader reader = new Reader();
-        OpenAPI api = reader.read(ResourceInPackageA.class);
+        OpenAPI api = reader.read(PetResourceSlashesinPath.class);
     
         System.out.println(Yaml.pretty(api));
     
